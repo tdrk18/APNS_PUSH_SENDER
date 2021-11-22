@@ -27,5 +27,3 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     ./configure --with-nghttp2=/usr/local --with-ssl && make && make install && ldconfig
 
 ADD send_push.sh /var/tmp/
-
-ADD keys /var/tmp/keys
