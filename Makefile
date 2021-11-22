@@ -14,7 +14,9 @@ run: build
 		echo "set BUNDLE_ID, please"; \
 		exit 1; \
 	fi
-	docker run --rm ${IMAGE_NAME} \
+	docker run --rm \
+		-v `pwd`/keys:/var/tmp/keys:ro \
+		${IMAGE_NAME} \
 		sh /var/tmp/send_push.sh \
 		--token=${DEVICE_TOKEN} \
 		--bundleID=${BUNDLE_ID}
