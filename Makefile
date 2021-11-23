@@ -6,6 +6,9 @@ build:
 clean:
 	docker rmi ${IMAGE_NAME}
 
+pull:
+	docker pull ghcr.io/${IMAGE_NAME}:latest
+
 run: build
 	@if [ -z ${DEVICE_TOKEN} ]; then \
 		echo "set DEVICE_TOKEN, please"; \
