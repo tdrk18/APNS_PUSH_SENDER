@@ -16,13 +16,17 @@ run: build
 	elif [ -z ${BUNDLE_ID} ]; then \
 		echo "set BUNDLE_ID, please"; \
 		exit 1; \
-	elif [ -z ${PEM_PATH} ]; then \
-		echo "set PEM_PATH, please"; \
+	elif [ -z ${P12_PATH} ]; then \
+		echo "set P12_PATH, please"; \
+		exit 1; \
+	elif [ -z ${PASSWORD} ]; then \
+		echo "set PASSWORD for the p12 file, please"; \
 		exit 1; \
 	fi
 	docker run --rm \
-		-v ${PEM_PATH}:/var/tmp/keys/certificate-and-privatekey.pem:ro \
+		-v ${P12_PATH}:/var/tmp/keys/apns_key.p12:ro \
 		${IMAGE_NAME} \
 		sh /var/tmp/send_push.sh \
 		--token=${DEVICE_TOKEN} \
-		--bundleID=${BUNDLE_ID}
+		--bundleID=${BUNDLE_ID} \
+		--password=${PASSWORD}
