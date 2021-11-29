@@ -24,7 +24,7 @@ run: build
 		exit 1; \
 	fi
 	docker run --rm \
-		-v ${P12_PATH}:/var/tmp/keys/aps_key.p12:ro \
+		-v ${P12_PATH}:/var/tmp/keys/apns_key.p12:ro \
 		${IMAGE_NAME} \
 		sh /var/tmp/send_push.sh \
 		--token=${DEVICE_TOKEN} \

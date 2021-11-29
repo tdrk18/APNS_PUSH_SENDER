@@ -27,7 +27,7 @@ shift $((OPTIND - 1))
 PUSH_DATA='{"aps": {"alert": "🎉push test"}}'
 APPLE_URI="https://api.push.apple.com/3/device/"
 PEM_PATH="/var/tmp/keys/certificate-and-privatekey.pem"
-P12_PATH="/var/tmp/keys/aps_key.p12"
+P12_PATH="/var/tmp/keys/apns_key.p12"
 
 openssl pkcs12 -password pass:${P12_PASSWORD} -in ${P12_PATH} -nodes -out ${PEM_PATH}
 
